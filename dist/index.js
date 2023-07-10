@@ -2863,7 +2863,7 @@ const main = async () => {
 
       const identifier = document['@id'];
 
-      filenameToIdentifier[fileName] = identifier;
+      filenameToIdentifier[fileName] = [identifier];
       identifierToTypes[identifier] = Array.isArray(document['@type']) ? document['@type'] : [document['@type']];
     }
   }
