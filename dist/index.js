@@ -2846,6 +2846,8 @@ const main = async () => {
 
   const fileNames = await fs.readdir(dataDirectory);
 
+  core.notice(`Found ${fileNames.length} data files to index`);
+
   const filenameToIdentifier = {};
   const identifierToTypes = {};
 
@@ -2865,6 +2867,8 @@ const main = async () => {
       identifierToTypes[identifier] = Array.isArray(document['@type']) ? document['@type'] : [document['@type']];
     }
   }
+
+  core.notice(`Done indexing. Index contains ${Object.keys(filenameToIdentifier).length} entries.`);
 
   const filenameToIdentifierIndexPath = join(process.env['GITHUB_WORKSPACE'], '_knoma', 'indices', 'filename_identifier.json');
   const identifierToTypesIndexPath = join(process.env['GITHUB_WORKSPACE'], '_knoma', 'indices', 'identifier_types.json');
